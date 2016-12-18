@@ -46,7 +46,7 @@ class CitySelector extends React.Component{
 			url = './app/Cities.json';
 		}
 		else {
-			url = `http://autocomplete.wunderground.com/aq?query=${input}`;
+			url = `https://autocomplete.wunderground.com/aq?query=${input}`;
 		}
 		return fetch(url)
 		.then((response) => response.json())
@@ -97,7 +97,7 @@ class CitySelector extends React.Component{
 
 	gotoWeather(value,event){
 		const api = 'cdffbcf0e7dedc12';
-		var url = 'http://api.wunderground.com/api/' + api + '/forecast' + value.l + '.json';
+		var url = 'https://api.wunderground.com/api/' + api + '/forecast' + value.l + '.json';
 		this.makeForecast(url);
 	};
 
