@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import fetch from 'isomorphic-fetch';
+import fetchJsonp from 'fetch-jsonp';
 import CityForecast from './CityForecast';
 import Warning from './Warning';
 import createFragment from 'react-addons-create-fragment';
@@ -44,15 +45,20 @@ class CitySelector extends React.Component{
 		var url = "";
 		if (!input) {
 			url = './app/Cities.json';
+			return fetch(url)
+	 		.then((response) => response.json())
+			.then((json) => {
+			return {options: json.RESULTS};
+			});
 		}
 		else {
 			url = `https://autocomplete.wunderground.com/aq?query=${input}`;
-		}
-		return fetch(url)
-		.then((response) => response.json())
-		.then((json) => {
+			return fetchJsonp(url, {jsonpCallback: 'cb'})
+	 		.then((response) => response.json())
+			.then((json) => {
 			return {options: json.RESULTS};
-		});
+			});
+		}
 	};
 
 	makeForecastResult(result){
@@ -113,7 +119,7 @@ class CitySelector extends React.Component{
 		return (
 			<div>
 				<AsyncComponent value={this.state.value} onChange={this.onChange} onValueClick={this.gotoWeather} valueKey="id" 
-				placeholder="Write or select a city and click on it's name..." labelKey="name" autoBlur={this.state.autoBlur}
+				placeholder="Type here." labelKey="name" autoBlur={this.state.autoBlur}
 				promptTextCreator={this.search} loadOptions={this.getCities} backspaceRemoves={this.state.backspaceRemoves} />
 				{ this.state.showForecast && <CityForecast city={this.state.value.name} forecast={this.state.forecast}/> }
 				{ this.state.showWarning && <Warning/> }
