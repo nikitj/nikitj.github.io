@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title Meteo
+		meta(name="description", content="")
+		meta(name="author", content="")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		link(rel="stylesheet", href="src/css/style.css")
+		link(rel="icon", type="image/png", href="/src/img/meteo_ico.png")
+		link(rel="stylesheet" href="https://unpkg.com/react-select/dist/react-select.css")
+
+	body
+		.sidebar
+			div
+				h1 Meteo
+				img(src="/src/img/sun.png")
+		section.content
+			article
+				#app
+		footer
+				h6 forecast by Weather Underground | Nikita Makarov | 2016
+
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js")
+		script(src="https://unpkg.com/classnames/index.js")
+		script(src="https://unpkg.com/react-input-autosize/dist/react-input-autosize.js")
+		script(src="https://unpkg.com/react-select/dist/react-select.js")
+		script(src="src/js/jquery-2.1.3.min.js")
+		script(src="src/js/functions.js")
+		script(src="../bundle.js")

@@ -1,0 +1,76 @@
+{
+  "RESULTS": [
+    {
+      "name": "Voronezh, Russia",
+      "type": "city",
+      "c": "RU",
+      "zmw": "00000.1188.27347",
+      "tz": "Europe/Moscow",
+      "tzs": "MSK",
+      "l": "/q/zmw:00000.1188.27347",
+      "ll": "56.939999 41.450001",
+      "lat": "56.939999",
+      "lon": "41.450001"
+    },
+    {
+      "name": "Berlin, Germany",
+      "type": "city",
+      "c": "DE",
+      "zmw": "00000.32.10384",
+      "tz": "Europe/Berlin",
+      "tzs": "CET",
+      "l": "/q/zmw:00000.32.10384",
+      "ll": "52.470001 13.480000",
+      "lat": "52.470001",
+      "lon": "13.480000"
+    },
+     {
+      "name": "Paris, France",
+      "type": "city",
+      "c": "FR",
+      "zmw": "00000.1.07149",
+      "tz": "Europe/Paris",
+      "tzs": "CET",
+      "l": "/q/zmw:00000.1.07149",
+      "ll": "48.730000 2.400000",
+      "lat": "48.730000",
+      "lon": "2.400000"
+    },
+    {
+      "name": "Madrid, Spain",
+      "type": "city",
+      "c": "ES",
+      "zmw": "00000.1.08221",
+      "tz": "Europe/Madrid",
+      "tzs": "CET",
+      "l": "/q/zmw:00000.1.08221",
+      "ll": "40.450001 -3.550000",
+      "lat": "40.450001",
+      "lon": "-3.550000"
+    },
+    {
+      "name": "Helsinki, Finland",
+      "type": "city",
+      "c": "FI",
+      "zmw": "00000.1.02974",
+      "tz": "Europe/Helsinki",
+      "tzs": "EET",
+      "l": "/q/zmw:00000.1.02974",
+      "ll": "60.320000 24.969999",
+      "lat": "60.320000",
+      "lon": "24.969999"
+    },
+    {
+      "name": "New York City, New York",
+      "type": "city",
+      "c": "US",
+      "zmw": "10001.11.99999",
+      "tz": "America/New_York",
+      "tzs": "EST",
+      "l": "/q/zmw:10001.11.99999",
+      "ll": "40.750000 -74.000000",
+      "lat": "40.750000",
+      "lon": "-74.000000"
+    }
+  ]
+}
