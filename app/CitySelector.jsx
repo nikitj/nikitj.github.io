@@ -61,8 +61,7 @@ class CitySelector extends React.Component{
 		}
 	};
 
-	makeForecastResult(result){
-			var forecastArr = result.forecast.simpleforecast.forecastday;
+	makeForecastResult(forecastArr){
 			var forecastAll = [];
 			for (let i = 0; i < 4 ; i++){
 				var f = forecastArr[i];
@@ -82,24 +81,24 @@ class CitySelector extends React.Component{
 	}
 	
 	makeForecast(url){
-		fetch(url)
+		fetchJsonp(url)
 		.then((response) => response.json())
 		.then((result) => {
 			try{
-			var forecastResult = this.makeForecastResult(result);
-			this.setState({
-				forecast: forecastResult,
-				showForecast: true
-			});
+				var forecastArr = result.forecast.simpleforecast.forecastday;
+				var forecastResult = this.makeForecastResult(forecastArr);
+				this.setState({
+					forecast: forecastResult,
+					showForecast: true
+				});
 			}
 			catch(e){
 				this.setState({
-				showWarning: true
+					showWarning: true
 				});
-			}
+		    }
 		});
 	}
-
 
 	gotoWeather(value,event){
 		const api = 'cdffbcf0e7dedc12';
@@ -119,8 +118,8 @@ class CitySelector extends React.Component{
 		return (
 			<div>
 				<AsyncComponent value={this.state.value} onChange={this.onChange} onValueClick={this.gotoWeather} valueKey="id" 
-				placeholder="Type here." labelKey="name" autoBlur={this.state.autoBlur}
-				promptTextCreator={this.search} loadOptions={this.getCities} backspaceRemoves={this.state.backspaceRemoves} />
+				placeholder="Type here." labelKey="name" autoBlur={this.state.autoBlur} promptTextCreator={this.search} 
+				loadOptions={this.getCities} backspaceRemoves={this.state.backspaceRemoves} />
 				{ this.state.showForecast && <CityForecast city={this.state.value.name} forecast={this.state.forecast}/> }
 				{ this.state.showWarning && <Warning/> }
 			</div>
