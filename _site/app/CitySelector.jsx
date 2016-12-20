@@ -16,7 +16,8 @@ class CitySelector extends React.Component{
 			forecast: null,
 			showForecast: false,
 			showWarning: false,
-			autoBlur: true
+			autoBlur: true,
+			currentCity: ""
 		};
 
 		this.onChange = this.onChange.bind(this);
@@ -100,16 +101,19 @@ class CitySelector extends React.Component{
 		});
 	}
 
-	gotoWeather(value,event){
-		const api = 'cdffbcf0e7dedc12';
-		var url = 'https://api.wunderground.com/api/' + api + '/forecast' + value.l + '.json';
-		this.makeForecast(url);
+	gotoWeather(option){
+		if (this.state.currentCity != option.l){
+			this.state.currentCity = option.l;
+			const api = '18090faa349b4963';
+			var url = 'https://api.wunderground.com/api/' + api + '/forecast' + this.state.currentCity + '.json';
+			this.makeForecast(url);
+		}
 	};
 
 	search(label){
 		return `Searching for cities start with "${label}"`;
 	}
-	
+
 	render() {
 		const AsyncComponent = this.state.creatable
 			? Select.AsyncCreatable
@@ -117,7 +121,7 @@ class CitySelector extends React.Component{
 
 		return (
 			<div>
-				<AsyncComponent value={this.state.value} onChange={this.onChange} onValueClick={this.gotoWeather} valueKey="id" 
+				<AsyncComponent value={this.state.value} onChange={this.onChange} valueRenderer={this.gotoWeather} valueKey="id" 
 				placeholder="Type here." labelKey="name" autoBlur={this.state.autoBlur} promptTextCreator={this.search} 
 				loadOptions={this.getCities} backspaceRemoves={this.state.backspaceRemoves} />
 				{ this.state.showForecast && <CityForecast city={this.state.value.name} forecast={this.state.forecast}/> }
